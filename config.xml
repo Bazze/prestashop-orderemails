@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<module>
+	<name>orderemails</name>
+	<displayName><![CDATA[Order emails]]></displayName>
+	<version><![CDATA[1.3]]></version>
+	<description><![CDATA[Send order emails to suppliers (dropshipping)]]></description>
+	<author><![CDATA[SN Solutions]]></author>
+	<tab><![CDATA[shipping_logistics]]></tab>
+	<confirmUninstall>Are you sure you want to uninstall this module and delete its settings?</confirmUninstall>
+	<is_configurable>1</is_configurable>
+	<need_instance>0</need_instance>
+	<limited_countries></limited_countries>
+</module>

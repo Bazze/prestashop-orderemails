@@ -1,0 +1,44 @@
+CREATE TABLE IF NOT EXISTS `_DB_PREFIX_orderemails` (
+`id_orderemail` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`id_supplier` INT NOT NULL ,
+`id_country` INT NOT NULL DEFAULT '0' ,
+`id_shop` INT UNSIGNED NOT NULL DEFAULT '1',
+`id_address` INT NOT NULL ,
+`id_lang` INT NOT NULL DEFAULT '0' ,
+`id_email_template` INT NOT NULL DEFAULT '1' ,
+`active` TINYINT( 1 ) NOT NULL DEFAULT '0' ,
+`emails` TEXT NOT NULL ,
+`order_states` TEXT NOT NULL,
+`exceptions` TEXT NOT NULL ,
+`timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+INDEX ( `id_supplier` , `id_country` , `id_address` , `id_email_template` , `active` )
+) ENGINE = _MYSQL_ENGINE_  DEFAULT CHARSET=utf8;
+#[NEW_QUERY]#
+CREATE TABLE IF NOT EXISTS `_DB_PREFIX_orderemails_addresses` (
+`id_address` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`id_shop` INT UNSIGNED NOT NULL DEFAULT '1' ,
+`title` VARCHAR( 100 ) NOT NULL ,
+`address` TEXT NOT NULL ,
+`timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = _MYSQL_ENGINE_  DEFAULT CHARSET=utf8;
+#[NEW_QUERY]#
+CREATE TABLE IF NOT EXISTS `_DB_PREFIX_orderemails_email_templates` (
+`id_email_template` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`id_shop` INT UNSIGNED NOT NULL DEFAULT '1' ,
+`content_type` VARCHAR( 40 ) NOT NULL ,
+`subject` VARCHAR( 200 ) NOT NULL ,
+`title` VARCHAR( 200 ) NOT NULL ,
+`content` TEXT NOT NULL ,
+`timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE = _MYSQL_ENGINE_  DEFAULT CHARSET=utf8;
+#[NEW_QUERY]#
+CREATE TABLE IF NOT EXISTS `_DB_PREFIX_orderemails_sent_emails` (
+`id_sent_email` INT NOT NULL AUTO_INCREMENT PRIMARY KEY ,
+`id_order` INT NOT NULL ,
+`id_order_state` INT NOT NULL ,
+`id_supplier` INT NOT NULL ,
+`id_shop` INT UNSIGNED NOT NULL DEFAULT '1' ,
+`sent_to` TEXT NOT NULL ,
+`timestamp` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+INDEX ( `id_order` )
+) ENGINE = _MYSQL_ENGINE_  DEFAULT CHARSET=utf8;
